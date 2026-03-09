@@ -24,7 +24,7 @@
 
 
 % The references should be written in the "ref.bib".
-\addbibresource{ref.bib} 
+\addbibresource{ref.bib}
 
 % You need this to read our theme from the same directory.
 \makeatletter
@@ -44,7 +44,17 @@
 % We have defined the "maincolor" and the "accentcolor" here.
 % If you like, it maybe a good habit only to use these colors
 % to create a sense of unity.
-\usetheme{express} 
+\usetheme{express}
+
+% Reset theme loader to default so built-in themes remain accessible
+% - I'm not sure if I trust this workaround
+\makeatletter
+\def\beamer@calltheme#1#2#3{%
+    \def\beamer@themelist{#2}
+    \@for\beamer@themename:=\beamer@themelist\do
+    {\usepackage[{#1}]{#3\beamer@themename}}}
+\makeatother
+\usefonttheme[onlymath]{serif}
 
 % \definecolor{maincolor}{RGB}{0, 170, 210}
 % \definecolor{accentcolor}{RGB}{190, 170, 80}
@@ -70,7 +80,7 @@
 % strong emphasis
 \newcommand{\Emph}[1]{\textbf{\color{maincolor} #1}}
 % very strong emphasis
-\newcommand{\EMPH}[1]{\textbf{\color{accentcolor} #1}} 
+\newcommand{\EMPH}[1]{\textbf{\color{accentcolor} #1}}
 
 % Some custom bullets of the "itemize".
 \newcommand{\okitem}{\item[\okmark]} % OK!, "v"
@@ -155,7 +165,7 @@
 
 \newcommand*{\okmark}{\tikz[baseline=(char.base)]{\node(char)[]{};
     \draw [line width = 0.9pt]
-    (0em, 0.25em) --++ (0.25em, -0.25em) --++ (0.55em, 0.55em); 
+    (0em, 0.25em) --++ (0.25em, -0.25em) --++ (0.55em, 0.55em);
   }
 }
 
@@ -163,18 +173,18 @@
     \draw [line width = 0.9pt]
     (0em, 0.35em) --++ (0.8em, 0em);
     \draw [line width = 0.9pt]
-    (0.45em, 0.0em) --++ (0.35em, 0.35em) --++ (-0.35em, 0.35em); 
+    (0.45em, 0.0em) --++ (0.35em, 0.35em) --++ (-0.35em, 0.35em);
   }
 }
 
 \newcommand*{\filledcircle}{\tikz[baseline=(char.base)]{\node(char)[]{};
-    \fill [maincolor!80] (0em, 0.35em) circle (0.4em); 
+    \fill [maincolor!80] (0em, 0.35em) circle (0.4em);
   }
 }
 
 \newcommand*{\ocircle}{\tikz[baseline=(char.base)]{\node(char)[]{};
     \draw [line width = 0.7pt]
-    (0em, 0.35em) circle (0.4em); 
+    (0em, 0.35em) circle (0.4em);
   }
 }
 
@@ -182,7 +192,7 @@
     \draw [line width = 0.9pt]
     (0em, 0.6em) --++ (0.6em, -0.6em);
     \draw [line width = 0.9pt]
-    (0em, 0.0em) --++ (0.6em, 0.6em); 
+    (0em, 0.0em) --++ (0.6em, 0.6em);
   }
 }
 
@@ -190,9 +200,9 @@
     \draw [line width = 0.9pt]
     (0em, 0.3em) --++ (1.0em, 0em);
     \draw [line width = 0.9pt]
-    (0.70em, 0.0em) --++ (0.30em, 0.30em) --++ (-0.30em, 0.30em); 
+    (0.70em, 0.0em) --++ (0.30em, 0.30em) --++ (-0.30em, 0.30em);
     \draw [line width = 0.9pt]
-    (0.30em, 0.0em) --++ (-0.30em, 0.30em) --++ (0.30em, 0.30em); 
+    (0.30em, 0.0em) --++ (-0.30em, 0.30em) --++ (0.30em, 0.30em);
   }
 }
 
@@ -255,4 +265,3 @@
 
 \usepackage{amsmath}
 \usepackage{cleveref}
-
